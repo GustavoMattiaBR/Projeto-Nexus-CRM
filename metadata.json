@@ -1,0 +1,6 @@
+{
+  "name": "Nexus CRM - Gestão de Leads e Contatos",
+  "description": "Aplicação web enxuta de CRM para gestão de contatos, pipeline de vendas e negócios com integração Supabase e autenticação.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
