@@ -36,6 +36,7 @@ interface DashboardProps {
   onOpenDeleteModal: (contact: Contact) => void;
   onOpenSqlModal: () => void;
   onOpenConfigModal: () => void;
+  onOpenAIInsightModal: (contact: Contact) => void;
   onLogout: () => void;
   isSupabaseConnected: boolean;
   toastMessage?: string | null;
@@ -54,6 +55,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
   onOpenDeleteModal,
   onOpenSqlModal,
   onOpenConfigModal,
+  onOpenAIInsightModal,
   onLogout,
   isSupabaseConnected,
   toastMessage,
@@ -530,6 +532,15 @@ export const Dashboard: React.FC<DashboardProps> = ({
                         {/* Ações */}
                         <td className="py-3.5 px-6 whitespace-nowrap text-right">
                           <div className="flex items-center justify-end gap-1.5">
+                            <button
+                              type="button"
+                              onClick={() => onOpenAIInsightModal(contact)}
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200 rounded-md transition-colors"
+                              title="Análise com Agente de Inteligência Artificial Gemini 2.5 Flash"
+                            >
+                              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+                              <span>Sugerir Abordagem</span>
+                            </button>
                             <button
                               type="button"
                               onClick={() => onOpenEditModal(contact)}

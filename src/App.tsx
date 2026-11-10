@@ -10,6 +10,7 @@ import { ContactModal } from './components/ContactModal';
 import { DeleteConfirmModal } from './components/DeleteConfirmModal';
 import { SqlModal } from './components/SqlModal';
 import { SupabaseConfigModal } from './components/SupabaseConfigModal';
+import { AIInsightModal } from './components/AIInsightModal';
 import { Contact, ContactFormData } from './types/crm';
 import {
   getSupabaseClient,
@@ -34,6 +35,9 @@ export default function App() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [contactToDelete, setContactToDelete] = useState<Contact | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const [isAIInsightModalOpen, setIsAIInsightModalOpen] = useState(false);
+  const [contactForAI, setContactForAI] = useState<Contact | null>(null);
 
   const [isSupabaseConnected, setIsSupabaseConnected] = useState(false);
 
@@ -226,11 +230,25 @@ export default function App() {
           }}
           onOpenSqlModal={() => setIsSqlModalOpen(true)}
           onOpenConfigModal={() => setIsConfigModalOpen(true)}
+          onOpenAIInsightModal={(contact) => {
+            setContactForAI(contact);
+            setIsAIInsightModalOpen(true);
+          }}
           onLogout={handleLogout}
           isSupabaseConnected={isSupabaseConnected}
           toastMessage={toastMessage}
         />
       )}
+
+      {/* AI Customer Insight Modal */}
+      <AIInsightModal
+        isOpen={isAIInsightModalOpen}
+        onClose={() => {
+          setIsAIInsightModalOpen(false);
+          setContactForAI(null);
+        }}
+        contact={contactForAI}
+      />
 
       {/* Contact Create / Edit Modal */}
       <ContactModal

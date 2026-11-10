@@ -33,3 +33,13 @@ export interface CRMStats {
   closedValue: number;
   closedCount: number;
 }
+
+export interface AIContactInsight {
+  profile_analysis: string;
+  closing_probability: string;
+  probability_level: 'Alta' | 'Média' | 'Baixa' | string;
+  key_recommendations: string[];
+  whatsapp_message: string;
+  email_subject: string;
+  email_body: string;
+}
